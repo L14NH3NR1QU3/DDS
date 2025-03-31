@@ -1,10 +1,13 @@
+import React from 'react'
+
 const ShowUserName = (props) => {
-    console.log(props);
+  console.log(props)
+  
     return (
-        <div>
-            <h1>Nome: {props.name} {props.otherName}</h1>
-        </div>
-    )
+    <div>
+        <h1>O nome do usuário é: {props.name}</h1>
+    </div>
+  )
 }
 
 export default ShowUserName
