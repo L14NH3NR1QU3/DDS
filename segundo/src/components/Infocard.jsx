@@ -6,16 +6,14 @@ const Infocard = () => {
     const navigate = useNavigate()
 
     const VoltarHome = () => {
-        navigate("/")
+        navigate("/sobre")
     }
     console.log("ID:", id)
 
   return (
-    <div>
+    <div style={{display: "flex", flexDirection: "column"}}>
         Infocard do cartão: {id}
-        <div>
-            <button onClick={VoltarHome}>Voltar</button>
-        </div>
+        <button onClick={VoltarHome}>Voltar</button>
     </div>
   )
 }
