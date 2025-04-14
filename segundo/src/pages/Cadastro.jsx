@@ -1,12 +1,16 @@
-import Forms from "../components/Forms"
+import React from "react";
+import Forms from "../components/Forms";
+import NewForms from "../components/NewForms";
 
 const Cadastro = () => {
   return (
     <div>
-      <h1>Cadastro</h1>
-      <Forms />  
-    </div>
-  )
-}
+      {/* <Forms /> */}
+      {/* <Forms nome="Cristiano Ronaldo" email="cr7@thebest.com" senha="goat7" /> */}
 
-export default Cadastro
+      <NewForms />
+    </div>
+  );
+};
+
+export default Cadastro;

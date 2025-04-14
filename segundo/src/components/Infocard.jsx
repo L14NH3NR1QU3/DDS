@@ -1,21 +1,20 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
 
-const Infocard = () => {
-    const {id} = useParams()
+const InfoCard = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();   
 
-    const navigate = useNavigate()
+  console.log("O id:", id);
 
-    const VoltarHome = () => {
-        navigate("/sobre")
-    }
-    console.log("ID:", id)
-
+  const VoltarHome = () => {
+    navigate("/home");
+  };
   return (
-    <div style={{display: "flex", flexDirection: "column"}}>
-        Infocard do cartão: {id}
-        <button onClick={VoltarHome}>Voltar</button>
+    <div style={{ display: "flex", flexDirection: "column-reverse" }}>
+      InfoCard do cartão: {id}
+      <button onClick={VoltarHome}>Voltar</button>
     </div>
-  )
-}
+  );
+};
 
-export default Infocard
+export default InfoCard;

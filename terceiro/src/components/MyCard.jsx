@@ -1,19 +1,19 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const MyCard = (props) => {
   return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={props.img} style={{width: "150px", margin: "0 auto"}}/>
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={props.img} />
       <Card.Body>
         <Card.Title>{props.titulo}</Card.Title>
         <Card.Text>
           {props.desc}
         </Card.Text>
-        <Button variant={props.tipButton}>{props.button}</Button>
+        <Button variant="primary">Ver Mais</Button>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default MyCard
+export default MyCard;

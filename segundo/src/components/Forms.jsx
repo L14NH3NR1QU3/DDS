@@ -1,61 +1,72 @@
-import { useState } from "react"
-import styles from "./css/Forms.module.css"
+import { useState } from "react";
 
-const Forms = () => {
-    const [nome, useNome] =useState()
-    const [email, useEmail] =useState()
-    const [senha, useSenha] =useState()
+import styles from "./Forms.module.css";
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("nome:", nome)
-    }
+const Forms = (props) => {
+  const [nome, setNome]   = useState(props ? props.nome : "");
+  const [email, setEmail] = useState(props ? props.email : "");
+  const [senha, setSenha] = useState(props ? props.senha : "");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Nome:", nome);
+    console.log("Email:", email);
+    console.log("Senha:", senha);
+  };
+
+  const handleName = (e) => {
+    //console.log(e.target.value);
+    setNome(e.target.value);
+  };
 
   return (
     <div>
-        <h3>Forms</h3>
-        <form 
-        className={styles.formulario} 
-        onSubmit={handleSubmit}>
-            <label 
-            className={styles.inputLabel}>
-                Nome 
-            <input 
-            className={styles.input} 
+      <h4>Cadarastro</h4>
+      <form className={styles.formulario} onSubmit={handleSubmit}>
+        {/* Label fora do input, com htmlFor */}
+        <label htmlFor="nome">Nome: </label>
+        <input
+          type="text"
+          id="nome"
+          placeholder="Digite seu nome..."
+          onChange={handleName}
+          value={nome}
+        />
+        {/* Label envolvendo o input */}
+        <label>
+          <span>Email:</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Digite seu email..."
+            onChange={
+              (e) => {
+              setEmail(e.target.value);
+            }
+          }
+          value={email}
+          />
+        </label>
+        <label>
+          <span>Senha:</span>
+          <input
+            type="password"
+            name="senha"
+            placeholder="Digite sua senha..."
             onChange={(e) => {
-                useNome(e.target.value)
-            }} 
-            type="text" 
-            placeholder="Username" />
-            </label>
-            <label 
-            className={styles.inputLabel}>
-                Email 
-            <input 
-            className={styles.input} 
-            onChange={(e) => {
-                useEmail(e.target.value)
-            }} type="text" 
-            placeholder="Email" />
-            </label>
-            <label 
-            className={styles.inputLabel}>
-                Senha 
-            <input 
-            className={styles.input} 
-            onChange={(e) => {
-                useSenha(e.target.value)
-            }} 
-            type="password" 
-            placeholder="Password" />
-            </label>
-            <input 
-            type="button" 
-            value="Cadastrar" 
-            className={styles.button} />
-        </form>
+                setSenha(e.target.value);
+              }}
+              value={senha}
+          />
+        </label>
+        <input
+          type="submit"
+          value="Enviar"
+          style={{ backgroundColor: "blue", color: "white" }}
+        />
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Forms
+export default Forms;
