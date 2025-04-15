@@ -6,6 +6,8 @@ import Cadastro from "../components/Cadastro";
 import Tabela from "../components/Tabela";
 import Excluir from "../components/Excluir";
 
+import { mostrar } from "../hooks/useApi" 
+
 const Home = () => {
   return (
       <div className="d-flex flex-wrap" >
@@ -13,7 +15,7 @@ const Home = () => {
           <Cadastro />
           <Excluir />
         </Col>
-        <Col xs={6} style={{ backgroundColor: "#eef" }}>
+        <Col xs={6} style={{ backgroundColor: "#eee" }}>
           <Tabela />
         </Col>
       </div>
