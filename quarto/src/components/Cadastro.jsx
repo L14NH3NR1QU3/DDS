@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 
 // Importação do hook do React Hook Form para lidar com o formulário
 import { useForm } from "react-hook-form";
+import { addFuncionario } from "../hooks/useApi";
 
 const Cadastro = () => {
   // Hook useForm para gerenciar o estado do formulário
@@ -20,7 +21,8 @@ const Cadastro = () => {
 
   // Função chamada quando o formulário é enviado com sucesso
   const onSubmit = (data) => {
-    console.log("Dados:", data);
+    addFuncionario(data)
+    console.log("Usuario:",data)
   };
 
   // Função chamada quando há erros no envio do formulário
@@ -128,6 +130,7 @@ const Cadastro = () => {
           className="mb-4 w-100 text-center"
         >
           <Form.Select {...register("tipo")}>
+          <option value="null"></option>
             <option value="Administrador">Administrador</option>
             <option value="Funcionário">Funcionário</option>
             <option value="Gerente">Gerente</option>
