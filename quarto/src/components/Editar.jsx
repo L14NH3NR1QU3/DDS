@@ -6,9 +6,9 @@ import Button from "react-bootstrap/Button";
 
 // Importação do hook do React Hook Form para lidar com o formulário
 import { useForm } from "react-hook-form";
-import { addFuncionario, editarFuncionario } from "../hooks/useApi";
+import { editarFuncionario } from "../hooks/useApi";
 
-const Cadastro = () => {
+const Editar = () => {
   // Hook useForm para gerenciar o estado do formulário
   // register: função para registrar os campos do formulário
   // handleSubmit: função para lidar com o envio do formulário
@@ -21,7 +21,7 @@ const Cadastro = () => {
 
   // Função chamada quando o formulário é enviado com sucesso
   const onSubmit = (data) => {
-    addFuncionario(data)
+    editarFuncionario(data)
     console.log("Usuario:",data)
     window.location.reload()
   };
@@ -33,12 +33,35 @@ const Cadastro = () => {
 
   return (
     <div>
-      <h1>Cadastro</h1>
+      <h1>Editar</h1>
       <form
         className={styles.formulario}
         onSubmit={handleSubmit(onSubmit, onError)}
       >
         {/* Caixinha de nome */}
+        <FloatingLabel
+        controlId="floatingInputId"
+        label="Id"
+        className="mb-3 w-100"
+        >
+          <Form.Control
+          size="lg"
+          type="text"
+          placeholder=""
+          {...register("id", {
+            required: "O id é obrigatório",
+            minLength: {
+            value: 1,
+            message: "O id deve ter pelo menos 1 caractere",
+            },
+            pattern: {
+              value: /^[A-Za-z0-9]+$/i,
+              message: "O id só pode conter letras e números",
+            },
+          })}
+        />
+          {errors.nome && <p className={styles.error}>{errors.nome.message}</p>}
+        </FloatingLabel>
         <FloatingLabel
           controlId="floatingInputNome"
           label="Nome"
@@ -93,7 +116,7 @@ const Cadastro = () => {
 
         {/* Caixinha de Senha */}
         <FloatingLabel
-          controlId="floatingPassword"
+          controlId="floatingPasswordEditar"
           label="Senha"
           className="mb-4 w-100"
         >
@@ -142,7 +165,7 @@ const Cadastro = () => {
         <Button
           as="input"
           type="submit"
-          value="Cadastrar"
+          value="Editar"
           className="mb-4 w-30 mx-auto"
         />
       </form>
@@ -150,4 +173,4 @@ const Cadastro = () => {
   );
 };
 
-export default Cadastro;
+export default Editar;
